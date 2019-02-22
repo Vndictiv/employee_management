@@ -30,8 +30,6 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
     public List<Employee> findAll() {
 
         // get the current hibernate session
-        // dla dialektu JPA będzie od razu query a póxniej list bez tego session. Jeśli mamy 2 implementacje
-        //... EmployeeDAO to w service musimy dodać @Qualifier i dodać nazwę w "employeeDAOHibernateImpl" nazwa jak klasa ale malą literą
         Session currentSession = entityManager.unwrap(Session.class);
 
         // create a query
