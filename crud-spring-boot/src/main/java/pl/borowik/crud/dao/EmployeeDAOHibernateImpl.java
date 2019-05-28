@@ -16,10 +16,8 @@ import pl.borowik.crud.entity.Employee;
 @Repository
 public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 
-    // define field for entitymanager
     private EntityManager entityManager;
 
-    // set up constructor injection
     @Autowired
     public EmployeeDAOHibernateImpl(EntityManager theEntityManager) {
         entityManager = theEntityManager;
@@ -28,18 +26,14 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 
     @Override
     public List<Employee> findAll() {
-
-        // get the current hibernate session
+        
         Session currentSession = entityManager.unwrap(Session.class);
 
-        // create a query
         Query<Employee> theQuery =
                 currentSession.createQuery("from Employee", Employee.class);
 
-        // execute query and get result list
         List<Employee> employees = theQuery.getResultList();
 
-        // return the results
         return employees;
     }
 
